@@ -2,24 +2,29 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('usu_usuario', {
-      usu_id_usu: {
+    return queryInterface.createTable('users', {
+      id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        autoIncremente: true,
+        autoIncrement: true,
         primaryKey: true,
       },
-      usu_des_nome: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      usu_des_email: {
+      email: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
-      usu_des_senha: {
+      password_hash: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      provider: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
         allowNull: false,
       },
       created_at: {
@@ -33,5 +38,7 @@ module.exports = {
     });
   },
 
-  down: (queryInterface, Sequelize) => {},
+  down: queryInterface => {
+    return queryInterface.dropTable('users');
+  },
 };

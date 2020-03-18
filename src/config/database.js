@@ -1,9 +1,12 @@
 module.exports = {
-  dialect: 'mssql',
+  dialect: 'postgres',
   host: 'localhost',
-  username: 'SA',
-  password: '181190Raju',
-  database: 'zonaverde',
+  // PARA mssql
+  // username: 'SA',
+  // PARA postgres
+  username: 'postgres',
+  password: 'docker',
+  database: 'gobarber',
   define: {
     timestamps: true,
     underscored: true,
